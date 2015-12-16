@@ -1,0 +1,42 @@
+
+
+<div class="menuContent" ng-init="tab = 1; category = 1">
+  <!--  <ul class="nav nav-pills nav-justified custom"> -->
+  <ul class="nav navbar-nav custom">
+      <li role="presentation"><a href ng-click="tab = 2"><i ng-class="tab === 2 ? 'fa fa-cutlery' :''"></i> Salate</a></li>
+      <li role="presentation"><a href ng-click="tab = 1"><i ng-class="tab === 1 ? 'fa fa-cutlery' :''"></i> Specialitati</a></li>
+      <li role="presentation"><a href ng-click="tab = 3"><i ng-class="tab === 3 ? 'fa fa-cutlery' :''"></i> Supe</a></li>
+      <li role="presentation"><a href ng-click="tab = 4"><i ng-class="tab === 4 ? 'fa fa-cutlery' :''"></i> Desert</a></li>
+      <li role="presentation"><a href="#/shoppingCartItems" class="shopCart"> &nbsp &nbsp &nbsp&nbsp &nbsp <img src="images/cart.png" class="cos"/>
+              <div class="redCircle" ng-show="nrItems() > 0"><span style="margin-left:6px;font-size:18px">{{nrItems()}}</span></div></a></li>
+    </ul>
+</div>
+
+
+    <div class="jumbotron">
+      <div ng-repeat="dish in dishes" ng-show="dish.category_id == tab" class="col-md-6"> 
+        <item-card item="dish"></item-card>
+      </div> 
+    </div>
+  
+
+
+
+
+{{showOverlay}}
+<div class="overlayModal" ng-show="showOverlay"></div>
+
+<div class="footer">
+  <div class="row">
+    <div class="col-md-6" style="text-align:center;padding-top:10px">
+      <p><i class="fa fa-phone"><b>0257355009</b></i></p>
+      <p><i class="fa fa-map-marker"><b>Strada Abrud,12</b></i></p>
+      <b>Arad, Romania</b>
+    </div>
+    <div class="col-md-6 pull-right" style="padding-top:65px">
+        © Copyright 2013 foodpanda este o marcă înregistrată
+    </div>
+
+  </div>   
+</div>
+
