@@ -1,4 +1,4 @@
-angular.module('cateringUiApp').service('SessionService', function(SessionFactory,$window) {
+angular.module('cateringUiApp').service('SessionService', function(SessionFactory,$window,$rootScope) {
 	var currentUser = null;
 	var message = "";
 
@@ -14,7 +14,14 @@ angular.module('cateringUiApp').service('SessionService', function(SessionFactor
 		},
 
 		getCurrentUser: function() {
+			console.log("crt user from session");
+			console.log(currentUser);
 			return currentUser;
+		},
+
+		setCurrentUser: function(user) {
+			console.log("setting user");
+			currentUser = user;
 		},
 
 		logIn: function(email, pass) {
@@ -22,15 +29,17 @@ angular.module('cateringUiApp').service('SessionService', function(SessionFactor
 			SessionFactory.save({email: email, pass: pass},
 				function(user) {
 					currentUser = user;
+					$rootScope.$broadcast('session:loggedin', user);
 					console.log("cur use"+currentUser);
 					console.log("we have current user");
 					console.log(user);
-					$window.location.href = '/#/order';
+					/*$window.location.href = '/#/order';*/
 				},
 				function(user) {
 					console.log("Wrong!!!!!!!!!!!");
-					message = "Parola sau email gresit. Va rugam incercati din nou!";
-					console.log("mes"+message);
+					$rootScope.$broadcast('session:wrongCredentials', 'Parola sau email gresit. Va rugam incercati din nou!');
+					//message = "Parola sau email gresit. Va rugam incercati din nou!";
+					//console.log("mes"+message);
 				}
 		)
 			

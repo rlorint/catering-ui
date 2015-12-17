@@ -10,14 +10,16 @@ angular.module('cateringUiApp').controller('OrderController',function(ShoppingCa
 		console.log("rez"+quantity*price);
 		$scope.pretTotal = quantity*price;
 	}
-	$scope.currentUser = SessionService.getCurrentUser(function() {
+	/*$scope.currentUser = SessionService.getCurrentUser(function() {
 		console.log("ddddd");
 		console.log($scope.orders);
 		console.log("user"+$scope.currentUser.name);
-	});
+	});*/
+
 	//$scope.currentUser = {id:'2',name:'Rox',email:'r@ggg',pass:'ds', adresa:'fd',telefon:'fdfd'};
 	$scope.editData = function() {
 		console.log("data is gonna be edited");
+		console.log($scope.currentUser);
 		UserFactory.update({userId: $scope.currentUser.id}, $scope.currentUser);
 	};
 	
@@ -27,6 +29,14 @@ angular.module('cateringUiApp').controller('OrderController',function(ShoppingCa
 		OrderItemFactory.save({order_id: 1, dish_id: 2, quantity: 1})
 
 	}
+
+	$scope.currentUser = null;
+    $scope.$on('session:loggedin', function(user) {
+    	$scope.currentUser = SessionService.getCurrentUser();
+    	console.log("we are listening");
+    	console.log(user);
+     // $scope.currentUser = user;
+    });
 	
 	
 });

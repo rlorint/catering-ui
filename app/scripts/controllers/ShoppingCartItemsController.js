@@ -4,24 +4,16 @@ angular.module('cateringUiApp').controller('ShoppingCartItemsController', ['$sco
 
     $scope.orders = ShoppingCart.getOrders();
     console.log("orders"+$scope.orders);
-	$scope.orderedItems = [
 
-    {
-        name: 'Chec',
-        description: 'Chec de casa facut cu faina si oua de casa, unt si gem de visine',
-        price: '12 RON',
-        photo: 'photos/chec.jpg'
-    },
-    {
-        name: 'Salata Caesar cu creveti',
-        description: 'Salta Caesar cu creveti, masline, rosii, salata verde si sos alb',
-        price: '13 RON',
-        photo: 'photos/caesar.jpg'
-    }];
-
-
-
-    
+    $scope.total = function() {
+        $scope.pretTotal = 0;
+        angular.forEach($scope.orders, function(value,key) {
+            $scope.pretTotal = $scope.pretTotal + value.quantity * value.price;
+            //console.log("pret"+pretTotal);
+            
+        }) 
+    }
+	    
 
     $scope.go = function(path) {
         console.log("pat"+path);
