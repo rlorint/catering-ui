@@ -1,5 +1,66 @@
-Comanda mea :
+<div class="wrapper">
 
-blalblaaa
+Sunteti logat cu <a data-toggle="modal" data-target="#myModal">{{currentUser.name}}</a>
+<p>
 
-<button class="btn btn-primary" onclick="location.href='/#/dashboard';">Comanda </button>
+<b>Sumar comanda</b>
+</p>
+
+<div ng-repeat="order in orders">
+	<div class="col-md-12">
+		{{order.quantity}} x   {{order.name}}
+	</div>
+	{{orders.name}}
+</div>
+
+
+
+
+
+
+<a class="btn btn-primary" href='/#/dashboard' ng-click="addOrderDB()" >Comanda </a>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Info user</h4>
+      </div>
+
+      <div class="modal-body">
+      	<form>
+      		<div class="form-group">
+      			<label>Nume</label>
+      			<input type="text" class="form-control" ng-model="currentUser.name">
+      		</div>
+      		<div class="form-group">
+      			<label>Email</label>
+      			<input type="email" class="form-control" ng-model="currentUser.email">
+      		</div>
+      		<div class="form-group">
+      			<label>Parola</label>
+      			<input type="password" class="form-control" ng-model="currentUser.pass">
+      		</div>
+      		<div class="form-group">
+      			<label>Telefon</label>
+      			<input type="tel" class="form-control" ng-model="currentUser.telefon">
+     		</div>
+     		<div class="form-group">
+     			<label>Adresa</label>
+     			<input type="text" class="form-control" ng-model="currentUser.adresa" placeholder="Introduceti adresa">
+     		</div>
+
+     		<div class="modal-footer">
+		        <button type="button" class="btn btn-default" data-dismiss="modal">Inapoi</button>
+		        <a class="btn btn-default" data-dismiss="modal" 
+		        		style=	"background: white!important;color: #005A31!important;"
+		        		ng-click="editData()">
+		        	Salveaza
+		        </a>
+      		</div>
+      	</form>
+      </div>

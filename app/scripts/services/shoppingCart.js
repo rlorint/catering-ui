@@ -14,9 +14,9 @@ return {
 		nrItems ++;
 	},
 
-	addOrder: function(name,photo,price,description) {
+	addOrder: function(name,photo,price,description, quantity) {
 		console.log("Adding new order");
-		orders.push({name: name, photo:photo, price:price, description:description});
+		orders.push({name: name, photo:photo, price:price, description:description, quantity:quantity});
 		console.log(orders);
 	},
 

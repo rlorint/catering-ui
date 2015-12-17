@@ -14,20 +14,16 @@
           <input type="password" class="form-control" ng-model="client.existingPass" placeholder="Introduceti parola" required>
         </div>
         
-        <button type="button" class="btn btn-default"  ng-click="login()">
-            Login
-        </button>
+         <a class="btn btn-default" ng-click="loginUser()" 
+        style="background: white!important; color: #005A31!important;">Log In</a>
+
+        <div>{{message}}</div>
       </form>
   </div>
 
   <div class="col-md-5 col-md-offset-1">
 
       <form>
-
-          
-
-          
-          
           Creaza cont
 
         		<div class="form-group">
@@ -35,9 +31,9 @@
         			<input type="text" class="form-control" ng-model="client.name" placeholder="Introduceti nume" required >
         		</div>
         		<div class="form-group">
-        			<label>Email</label>
-        			<input type="email" class="form-control" ng-model="client.email" placeholder="Introduceti email" required>
-        		</div>
+              <label>Email</label>
+              <input type="text" class="form-control" ng-model="client.email" placeholder="Introduceti email" required >
+            </div>
             <div class="form-group">
               <label>Parola</label>
               <input type="password" class="form-control" ng-model="client.pass" placeholder="Introduceti parola" required>
@@ -51,8 +47,10 @@
          			<input type="text" class="form-control" ng-model="client.adresa" placeholder="Introduceti adresa" required>
          		</div>
            
-        <button type="button" class="btn btn-default">Renunta</button>
-        <a onclick="location.href='/#/order';" class="btn btn-default" ng-click="createUser()" style="background: white!important; color: #005A31!important;">Sign Up</a>    
+        <button type="button" class="btn btn-default" 
+                onclick="location.href='/#/shoppingCartItems'">Renunta</button>
+        <a href='/#/order' class="btn btn-default" ng-click="createUser()" 
+        style="background: white!important; color: #005A31!important;">Sign Up</a>    
           
 
         </form>

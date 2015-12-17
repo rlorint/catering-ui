@@ -1,5 +1,6 @@
-angular.module('cateringUiApp').service('SessionService', function(SessionFactory) {
+angular.module('cateringUiApp').service('SessionService', function(SessionFactory,$window) {
 	var currentUser = null;
+	var message = "";
 
 	return {
 		isAuthenticated: function() {
@@ -12,12 +13,32 @@ angular.module('cateringUiApp').service('SessionService', function(SessionFactor
 			return false;
 		},
 
+		getCurrentUser: function() {
+			return currentUser;
+		},
+
 		logIn: function(email, pass) {
-			SessionFactory.save({email: email, pass: pass}, function(user) {
-				currentUser = user;
-				console.log("we have current user"+currentUser);
-			})
+			console.log("we are in login from SessionService");
+			SessionFactory.save({email: email, pass: pass},
+				function(user) {
+					currentUser = user;
+					console.log("cur use"+currentUser);
+					console.log("we have current user");
+					console.log(user);
+					$window.location.href = '/#/order';
+				},
+				function(user) {
+					console.log("Wrong!!!!!!!!!!!");
+					message = "Parola sau email gresit. Va rugam incercati din nou!";
+					console.log("mes"+message);
+				}
+		)
 			
+		},
+
+		getMessage: function() {
+			console.log("the msg is"+message);
+			return message;
 		}
 	}
 })

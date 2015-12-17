@@ -1,0 +1,34 @@
+'use strict';
+
+angular.module('cateringUiApp').controller('OrderController',function(ShoppingCart,OrderFactory,OrderItemFactory,UserFactory,SessionService,$scope) {
+
+	//$scope.orders = ShoppingCart.getOrders();
+	$scope.orders = [
+		{
+			name: "Paste",
+		 	quantity: "12"},
+		{
+			name: "Salata",
+			quantity: "15"
+		}
+	]
+	$scope.currentUser = SessionService.getCurrentUser(function() {
+		console.log("ddddd");
+		console.log($scope.orders);
+		console.log("user"+$scope.currentUser.name);
+	});
+	//$scope.currentUser = {id:'2',name:'Rox',email:'r@ggg',pass:'ds', adresa:'fd',telefon:'fdfd'};
+	$scope.editData = function() {
+		console.log("data is gonna be edited");
+		UserFactory.update({userId: $scope.currentUser.id}, $scope.currentUser);
+	};
+	
+	$scope.addOrderDB = function() {
+		console.log("adding order in bd for client"+$scope.currentUser.id);
+		OrderFactory.save({user_id: $scope.currentUser.id});
+		OrderItemFactory.save({order_id: 1, dish_id: 2, quantity: 1})
+
+	}
+	
+	
+});

@@ -43,7 +43,7 @@ angular
 
     .when('/order', {
         templateUrl : 'views/order.html',
-        controller : 'AuthenticationController'
+        controller : 'OrderController'
     })
 
     .otherwise({redirectTo : 'home'})
