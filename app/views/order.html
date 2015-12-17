@@ -8,7 +8,7 @@ Sunteti logat cu <a data-toggle="modal" data-target="#myModal">{{currentUser.nam
 
 <div ng-repeat="order in orders">
 	<div class="col-md-12">
-		{{order.quantity}} x   {{order.name}}
+		{{order.quantity}} x   {{order.name}}  {{calculatePrice(order.quantity, order.price)()}} {{pretTotal}} RON
 	</div>
 	{{orders.name}}
 </div>

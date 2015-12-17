@@ -2,16 +2,14 @@
 
 angular.module('cateringUiApp').controller('OrderController',function(ShoppingCart,OrderFactory,OrderItemFactory,UserFactory,SessionService,$scope) {
 
-	//$scope.orders = ShoppingCart.getOrders();
-	$scope.orders = [
-		{
-			name: "Paste",
-		 	quantity: "12"},
-		{
-			name: "Salata",
-			quantity: "15"
-		}
-	]
+	$scope.orders = ShoppingCart.getOrders();
+	console.log($scope.orders);
+	
+	$scope.calculatePrice= function(quantity, price) {
+		console.log(quantity);
+		console.log("rez"+quantity*price);
+		$scope.pretTotal = quantity*price;
+	}
 	$scope.currentUser = SessionService.getCurrentUser(function() {
 		console.log("ddddd");
 		console.log($scope.orders);
